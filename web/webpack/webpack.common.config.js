@@ -122,7 +122,7 @@ const config = {
                     }
                 }],
                 exclude: [new RegExp('^((?!\\' + path.sep + 'static\\' + path.sep + ').)+$')]
-            }
+            },
         ]
     },
 
@@ -201,20 +201,16 @@ const config = {
         path: path.join(__dirname, outputPath),
         filename: './resources/js/[name]-[chunkhash].js',
         chunkFilename: './resources/js/[name]-[chunkhash].js',
-        sourceMapFilename: './resources/js/[name]-[chunkhash].map'
+        sourceMapFilename: './resources/js/[name]-[chunkhash].map',
+        publicPath: '/',  // Add this line to set the base path for assets
     },
+    
 
     node: {
-        global: true,
-        process: true,
-        Buffer: false,
-        crypto: 'empty',
-        module: false,
-        clearImmediate: false,
-        setImmediate: false,
-        clearTimeout: true,
-        setTimeout: true
-    }
+        __dirname: false,
+        __filename: false,
+        global: false
+      }
 };
 
 module.exports = config;

@@ -30,14 +30,16 @@ config.module.rules.unshift(
 );
 
 config.devServer = {
-    contentBase: config.output.path,
-    disableHostCheck: true,
+    static: {
+        directory: config.output.path, // This replaces contentBase
+    },
+    allowedHosts: 'all', // or specify an array of allowed hosts if needed
     historyApiFallback: true,
     compress: true,
     port: 9000,
     proxy: {
-        '/api': 'http://localhost:8080'
-    }
+        '/api': 'http://localhost:8080',
+    },
 };
 
 config.devtool = 'source-map';
